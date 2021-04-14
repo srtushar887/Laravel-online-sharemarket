@@ -1,0 +1,137 @@
+<?php
+
+namespace App\Http\Controllers\Superadmin;
+
+use App\Http\Controllers\Controller;
+use App\Models\Admin;
+use App\Models\User;
+use App\Models\user_account_active;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
+class SuperAdminUserController extends Controller
+{
+    public function users()
+    {
+        $users = User::orderBy('id','desc')->paginate(15);
+        return view('superadmin.users.userList',compact('users'));
+    }
+
+    public function user_edit($id)
+    {
+        $user = User::where('id',$id)->first();
+        return view('superadmin.users.userEdit',compact('user'));
+    }
+
+    public function user_update(Request $request)
+    {
+        $user = User::where('id',$request->edit_user)->first();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->is_acc_activate = $request->is_acc_activate;
+        $user->save();
+
+        return back()->with('success','User Account Successfully Updated');
+
+    }
+
+
+    public function user_delete(Request $request){
+        $user_del = User::where('id',$request->user_delete)->first();
+        $user_del->delete();
+        return back()->with('success','User Account Successfully Deleted');
+
+    }
+
+    public function user_account_activation()
+    {
+        $users_acc = user_account_active::orderBy('id','desc')->paginate(15);
+        return view('superadmin.users.userAccountActivation',compact('users_acc'));
+    }
+
+
+    public function user_account_activation_update(Request $request)
+    {
+        $status = $request->status;
+        if ($status == 0) {
+            return back()->with('alert','Please select status');
+        }elseif ($status == 2){
+            $user_ac = user_account_active::where('id',$request->user_acc_id)->first();
+            $user_ac->status = $request->status;
+            $user_ac->save();
+
+            $user = User::where('id',$user_ac->user_id)->first();
+            $user->is_acc_activate = 2;
+            $user->save();
+
+
+            return back()->with('success','Account Successfully Updated');
+        }elseif ($status == 3){
+            $user_ac = user_account_active::where('id',$request->user_acc_id)->first();
+            $user_ac->status = $request->status;
+            $user_ac->save();
+
+            $user = User::where('id',$user_ac->user_id)->first();
+            $user->is_acc_activate = 3;
+            $user->save();
+
+
+            return back()->with('success','Account Successfully Updated');
+        }else{
+            return back()->with('alert','Something went wrong');
+        }
+
+    }
+
+    public function admins()
+    {
+        $admin = Admin::orderBy('id','desc')->paginate(15);
+        return view('superadmin.users.adminList',compact('admin'));
+    }
+
+
+    public function admins_create(Request $request)
+    {
+        $admin = new Admin();
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+        $admin->phone = $request->phone;
+        $admin->password = Hash::make($request->password);
+        $admin->save();
+        return back()->with('success','Admin Account Successfully Created');
+
+    }
+
+
+    public function admin_update(Request $request)
+    {
+        $admin_update = Admin::where('id',$request->admin_edit_id)->first();
+        $admin_update->name = $request->name;
+        $admin_update->email = $request->email;
+        $admin_update->phone = $request->phone;
+        if ($request->password != null) {
+            $admin_update->password = Hash::make($request->password);
+        }
+        $admin_update->save();
+        return back()->with('success','Admin Account Successfully Updated');
+    }
+
+
+    public function admin_delete(Request $request)
+    {
+        $delete_admin = Admin::where('id',$request->admin_delete_id)->first();
+        $delete_admin->delete();
+        return back()->with('success','Admin Account Successfully Deleted');
+
+    }
+
+
+
+
+
+
+
+
+}
