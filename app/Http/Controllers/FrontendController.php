@@ -19,6 +19,7 @@ class FrontendController extends Controller
 {
     public function index()
     {
+
         $total_users = User::count();
         $plans=plan::orderBy('id','desc')->where('status',1)->get();
         $user_with = user_withdraw::orderBy('id','desc')->take(5)->get();

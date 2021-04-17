@@ -26,7 +26,7 @@ class AdminUserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
-        $user->account_status = $request->account_status;
+        $user->is_account_veirified = $request->is_acc_activate;
         $user->save();
 
         return back()->with('success','User Account Successfully Updated');

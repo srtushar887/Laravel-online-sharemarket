@@ -160,12 +160,7 @@
                             <span>Users Account Activation</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{route('superadmin.buy.share.list')}}" class=" waves-effect">
-                            <i class="ri-chat-1-line"></i>
-                            <span>Seller Share List</span>
-                        </a>
-                    </li>
+
                     <li>
                         <a href="{{route('superadmin.plans')}}" class=" waves-effect">
                             <i class="ri-chat-1-line"></i>
@@ -173,15 +168,21 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('superadmin.normal.share')}}" class=" waves-effect">
+                        <a href="{{route('superadmin.shared.share.list')}}" class=" waves-effect">
                             <i class="ri-chat-1-line"></i>
-                            <span>Normal Share List</span>
+                            <span>User Share Plan</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('superadmin.plans')}}" class=" waves-effect">
+                        <a href="{{route('superadmin.normal.share.list')}}" class=" waves-effect">
                             <i class="ri-chat-1-line"></i>
-                            <span>Special Share List</span>
+                            <span>User Normal Plan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('superadmin.scpecial.share.list')}}" class=" waves-effect">
+                            <i class="ri-chat-1-line"></i>
+                            <span>User Special Plan</span>
                         </a>
                     </li>
 

@@ -37,7 +37,18 @@
                                     <th>{{$user->name}}</th>
                                     <th>{{$user->email}}</th>
                                     <th>{{$user->phone}}</th>
-                                    <th>{{$user->status}}</th>
+                                    <th>
+                                       @if ($user->is_account_veirified == 0)
+                                           Not Activated
+                                        @elseif($user->is_account_veirified == 1)
+                                           Activated
+                                        @elseif($user->is_account_veirified == 2)
+                                            Blocked
+                                        @else
+                                           Not Set
+
+                                       @endif
+                                    </th>
                                     <td>
                                         <a href="{{route('superadmin.edit.user',$user->id)}}">
                                             <button type="button" class="btn btn-primary btn-sm">

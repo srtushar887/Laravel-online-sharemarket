@@ -72,7 +72,7 @@ class CustomLoginController extends Controller
                     ];
                     Mail::to($to)->send(new UserAccountActivateMail($msg));
 
-                    return redirect(route('login'))->with('acc_create_success','Account successfully created. We have send you mail for active your account. Please check your mail.');
+                    return redirect(route('login'))->with('acc_create_success','Account successfully created. We have sent you an email to activate your account. Please verify your email address to continue');
                 }
 
 
@@ -146,7 +146,7 @@ class CustomLoginController extends Controller
                     ];
                     Mail::to($to)->send(new UserAccountActivateMail($msg));
 
-                    return redirect(route('login'))->with('acc_create_success','Account successfully created. We have send you mail for active your account. Please check your mail.');
+                    return redirect(route('login'))->with('acc_create_success','Account successfully created. We have sent you an email to activate your account. Please verify your email address to continue');
                 }
 
 
@@ -166,7 +166,7 @@ class CustomLoginController extends Controller
             $user->save();
             return redirect(route('login'))->with('acoount_active','Your account successfully activated. Please login');
         }else{
-            return redirect(route('login'))->with('login_error','Sorry! Your account was not verified. Please try again');
+            return redirect(route('login'))->with('login_error','Sorry! Your account is not activated, kindly verify your account to continue');
         }
 
     }

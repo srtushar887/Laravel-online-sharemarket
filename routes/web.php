@@ -202,10 +202,11 @@ Route::group(['middleware' => ['auth:superadmin']], function() {
         Route::post('/user-account-activation-update', [\App\Http\Controllers\Superadmin\SuperAdminUserController::class,'user_account_activation_update'])->name('superadmin.users.account.activation.update');
 
         //share
-        Route::get('/buy-share-list', [\App\Http\Controllers\Superadmin\SuperAdminShareController::class,'buy_share_list'])->name('superadmin.buy.share.list');
+        Route::get('/normal-share-list', [\App\Http\Controllers\Superadmin\SuperAdminShareController::class,'normal_share_list'])->name('superadmin.normal.share.list');
+        Route::get('/shared-share-list', [\App\Http\Controllers\Superadmin\SuperAdminShareController::class,'shared_share_list'])->name('superadmin.shared.share.list');
+        Route::get('/special-share-list', [\App\Http\Controllers\Superadmin\SuperAdminShareController::class,'scpecial_share_list'])->name('superadmin.scpecial.share.list');
 
-        //normal share
-        Route::get('/normal-share-list', [\App\Http\Controllers\Superadmin\SuperAdminShareController::class,'normal_share_list'])->name('superadmin.normal.share');
+
 
         //withdraw
         Route::get('/withdraw-pending', [\App\Http\Controllers\Superadmin\SuperAdminWithdrawController::class,'withdraw_pending'])->name('superadmin.withdraw.pending');

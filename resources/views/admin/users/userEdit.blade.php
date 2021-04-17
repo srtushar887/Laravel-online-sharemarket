@@ -32,10 +32,10 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Account Status</label>
-                                <select class="form-control" name="account_status">
+                                <select class="form-control" name="is_acc_activate">
                                     <option value="0">select any</option>
-                                    <option value="1" {{$user->account_status == 1 ? 'selected' : ''}}>Active</option>
-                                    <option value="2" {{$user->account_status == 3 ? 'selected' : ''}}>Block</option>
+                                    <option value="1" {{$user->is_acc_activate == 1 ? 'selected' : ''}}>Active</option>
+                                    <option value="2" {{$user->is_acc_activate == 2 ? 'selected' : ''}}>Block</option>
                                 </select>
                             </div>
                         </div>

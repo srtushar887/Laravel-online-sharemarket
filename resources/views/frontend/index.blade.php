@@ -188,7 +188,7 @@
                             <a class="support-images" href="#"><i class="flaticon-024-megaphone"></i></a>
                             <div class="support-content">
                                 <h4>Live customer support</h4>
-                                <p>You can chat with an admin using tawk.to installed on our landing page or utilize the chat feature within the dashboard once you are logged in. You can as well chat with your fellow investors</p>
+                                <p>You can chat with an admin using our live chat feature, or get service via our 27/4 call center.</p>
                             </div>
                         </div>
                     </div>
@@ -203,7 +203,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="section-headline text-center">
-                        <h3>Deposite and withdrawals history</h3>
+                        <h3>Deposit and withdrawals history</h3>
                         <p>Help agencies to define their new business objectives and then create professional software.</p>
                     </div>
                 </div>
@@ -283,31 +283,7 @@
 
     <!-- End Affiliate Area -->
     <!-- Start Overview Area -->
-    <div class="overview-area bg-color fix area-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="overview-content">
-                        <div class="overview-images">
-                            <img src="{{asset('assets/frontend/')}}/img/about/ab2.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="overview-text">
-                        <h3>Secure investments monthly instant award and Bonus </h3>
-                        <p>Replacing a  maintains the amount of lines. When replacing a selection. help agencies to define their new business objectives and then create</p>
-                        <ul>
-                            <li><a href="#">Innovation idea latest business tecnology</a></li>
-                            <li><a href="#">Digital content marketing online clients plateform</a></li>
-                            <li><a href="#">Safe secure services for you online email account</a></li>
-                        </ul>
-                        <a class="overview-btn" href="#">Signup today</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- End Overview Area -->
     <!-- Start Blog area -->
     <div class="blog-area bg-color2 area-padding-2">
