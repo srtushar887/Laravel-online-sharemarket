@@ -77,8 +77,8 @@
                                                     <div class="form-group">
 
                                                         <div class="form-group">
-                                                            <label>Paybill Account</label>
-                                                            <input type="text" class="form-control" placeholder="Customer Number" name="address">
+                                                            <label>Paybill Number : 4047793</label>
+                                                            <input type="text" class="form-control" placeholder="Customer Number" name="address" value="{{Auth::user()->phone}}" readonly>
                                                             <input type="hidden" class="form-control" placeholder="Enter Plan Name" name="choose_plan" value="{{$plan->id}}">
                                                         </div>
                                                         <div class="form-group">

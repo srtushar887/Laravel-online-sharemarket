@@ -42,7 +42,7 @@
                                         </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <label>Phone Number</label>
-                                            <input type="text" id="name" class="form-control" name="phone" placeholder="Phone Number" required="" data-error="Please enter your name">
+                                            <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" class="form-control" name="phone" placeholder="Phone Number" required="" maxlength="10">
                                         </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <label>Password</label>
@@ -51,6 +51,14 @@
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <label>Confirm Password</label>
                                             <input type="password" id="msg_subject" class="form-control" name="confirm_password" placeholder="Confirm Password" required="" data-error="Please enter your message subject">
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                                            <div class="check-group flexbox">
+                                                <label class="check-box">
+                                                    <input type="checkbox" class="check-box-input" value="1" name="accept_temrs">
+                                                    <span class="remember-text">Accept Terms & Conditions</span>
+                                                </label>
+                                            </div>
                                         </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12 text-center">
                                             <button type="submit" id="" class="slide-btn login-btn">Register</button>

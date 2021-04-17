@@ -161,12 +161,12 @@
                         </a>
                     </li>
 
-                    <li>
-                        <a href="{{route('superadmin.plans')}}" class=" waves-effect">
-                            <i class="ri-chat-1-line"></i>
-                            <span>Bought Share List</span>
-                        </a>
-                    </li>
+{{--                    <li>--}}
+{{--                        <a href="{{route('superadmin.plans')}}" class=" waves-effect">--}}
+{{--                            <i class="ri-chat-1-line"></i>--}}
+{{--                            <span>Bought Share List</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
                     <li>
                         <a href="{{route('superadmin.shared.share.list')}}" class=" waves-effect">
                             <i class="ri-chat-1-line"></i>

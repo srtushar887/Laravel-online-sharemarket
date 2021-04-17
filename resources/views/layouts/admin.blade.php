@@ -139,28 +139,31 @@
                             <span>Users</span>
                         </a>
                     </li>
+
                     <li>
-                        <a href="{{route('admin.buy.share.list')}}" class=" waves-effect">
+                        <a href="{{route('admin.shared.share.list')}}" class=" waves-effect">
                             <i class="ri-chat-1-line"></i>
-                            <span>Seller Share List</span>
+                            <span>User Share Plan</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('admin.plans')}}" class=" waves-effect">
+                        <a href="{{route('admin.normal.share.list')}}" class=" waves-effect">
                             <i class="ri-chat-1-line"></i>
-                            <span>Bought Share List</span>
+                            <span>User Normal Plan</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('admin.normal.share')}}" class=" waves-effect">
+                        <a href="{{route('admin.scpecial.share.list')}}" class=" waves-effect">
                             <i class="ri-chat-1-line"></i>
-                            <span>Normal Share List</span>
+                            <span>User Special Plan</span>
                         </a>
                     </li>
+
+
                     <li>
-                        <a href="{{route('admin.plans')}}" class=" waves-effect">
+                        <a href="{{route('admin.users.account.activation')}}" class=" waves-effect">
                             <i class="ri-chat-1-line"></i>
-                            <span>Special Share List</span>
+                            <span>User Account Activation</span>
                         </a>
                     </li>
 

@@ -8,17 +8,28 @@ use Illuminate\Http\Request;
 
 class AdminShareController extends Controller
 {
-    public function buy_share_list()
+    public function normal_share_list()
     {
-        $plans = user_plan::orderBy('id','desc')->paginate(15);
-        return view('admin.share.buyShareList',compact('plans'));
-    }
-
-    public function normal_share_list(Request $request)
-    {
-        $plans = user_plan::where('plan_type',2)->orderBy('id','desc')
-            ->with('user')
+        $plans = user_plan::orderBy('id','desc')
+            ->where('plan_type',2)
             ->paginate(15);
         return view('admin.share.normalShareList',compact('plans'));
+    }
+
+
+    public function shared_share_list()
+    {
+        $plans = user_plan::orderBy('id','desc')
+            ->where('plan_type',1)
+            ->paginate(15);
+        return view('admin.share.sharedShareList',compact('plans'));
+    }
+
+    public function scpecial_share_list()
+    {
+        $plans = user_plan::orderBy('id','desc')
+            ->where('plan_type',3)
+            ->paginate(15);
+        return view('admin.share.scecialShareList',compact('plans'));
     }
 }

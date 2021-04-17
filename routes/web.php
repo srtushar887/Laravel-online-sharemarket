@@ -281,12 +281,13 @@ Route::group(['middleware' => ['auth:admin']], function() {
         Route::get('/user-edit/{id}', [\App\Http\Controllers\Admin\AdminUserController::class,'user_edit'])->name('admin.edit.user');
         Route::post('/user-update', [\App\Http\Controllers\Admin\AdminUserController::class,'user_update'])->name('admin.user.update');
         Route::post('/user-delete', [\App\Http\Controllers\Admin\AdminUserController::class,'user_delete'])->name('admin.user.delete');
+        Route::get('/user-account-activation', [\App\Http\Controllers\Admin\AdminUserController::class,'user_account_activation'])->name('admin.users.account.activation');
+        Route::post('/user-account-activation-save', [\App\Http\Controllers\Admin\AdminUserController::class,'user_account_activation_save'])->name('admin.users.account.activation.update');
 
         //share
-        Route::get('/buy-share-list', [\App\Http\Controllers\Admin\AdminShareController::class,'buy_share_list'])->name('admin.buy.share.list');
-
-        //normal share
-        Route::get('/normal-share-list', [\App\Http\Controllers\Admin\AdminShareController::class,'normal_share_list'])->name('admin.normal.share');
+        Route::get('/normal-share-list', [\App\Http\Controllers\Admin\AdminShareController::class,'normal_share_list'])->name('admin.normal.share.list');
+        Route::get('/shared-share-list', [\App\Http\Controllers\Admin\AdminShareController::class,'shared_share_list'])->name('admin.shared.share.list');
+        Route::get('/special-share-list', [\App\Http\Controllers\Admin\AdminShareController::class,'scpecial_share_list'])->name('admin.scpecial.share.list');
 
         //withdraw
         Route::get('/withdraw-pending', [\App\Http\Controllers\Admin\AdminWithdrawController::class,'withdraw_pending'])->name('admin.withdraw.pending');

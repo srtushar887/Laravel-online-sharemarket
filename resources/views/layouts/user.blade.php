@@ -153,12 +153,12 @@
                     </li>
 
 
-                    <li>
-                        <a href="{{route('user.message')}}" class=" waves-effect">
-                            <i class="ri-chat-1-line"></i>
-                            <span>Message</span>
-                        </a>
-                    </li>
+{{--                    <li>--}}
+{{--                        <a href="{{route('user.message')}}" class=" waves-effect">--}}
+{{--                            <i class="ri-chat-1-line"></i>--}}
+{{--                            <span>Message</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
 
                     <li>
                         <a href="{{route('user.referral.users')}}" class=" waves-effect">

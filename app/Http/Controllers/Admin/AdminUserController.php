@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\user_account_active;
 use Illuminate\Http\Request;
 
 class AdminUserController extends Controller
@@ -40,4 +41,53 @@ class AdminUserController extends Controller
         return back()->with('success','User Account Successfully Deleted');
 
     }
+
+
+    public function user_account_activation()
+    {
+        $users_acc = user_account_active::orderBy('id','desc')->paginate(15);
+        return view('admin.users.userAccountActivation',compact('users_acc'));
+    }
+
+    public function user_account_activation_save(Request $request)
+    {
+        $status = $request->status;
+        if ($status == 0) {
+            return back()->with('alert','Please select status');
+        }elseif ($status == 2){
+            $user_ac = user_account_active::where('id',$request->user_acc_id)->first();
+            $user_ac->status = $request->status;
+            $user_ac->save();
+
+
+            $user = User::where('id',$user_ac->user_id)->first();
+            $user->is_acc_activate = 2;
+            $user->save();
+
+
+            $upline_user = User::where('my_ref_id',$user->have_ref_id)->first();
+            if ($upline_user) {
+                $am = ($user_ac->amount * 50) / 100;
+                $upline_user->balance = $upline_user->balance + $am;
+                $upline_user->save();
+            }
+
+            return back()->with('success','Account Successfully Updated');
+        }elseif ($status == 3){
+            $user_ac = user_account_active::where('id',$request->user_acc_id)->first();
+            $user_ac->status = $request->status;
+            $user_ac->save();
+
+            $user = User::where('id',$user_ac->user_id)->first();
+            $user->is_acc_activate = 3;
+            $user->save();
+
+
+            return back()->with('success','Account Successfully Updated');
+        }else{
+            return back()->with('alert','Something went wrong');
+        }
+    }
+
+
 }

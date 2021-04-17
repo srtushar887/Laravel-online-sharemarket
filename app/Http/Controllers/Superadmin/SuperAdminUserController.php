@@ -62,10 +62,18 @@ class SuperAdminUserController extends Controller
             $user_ac->status = $request->status;
             $user_ac->save();
 
+
             $user = User::where('id',$user_ac->user_id)->first();
             $user->is_acc_activate = 2;
             $user->save();
 
+
+            $upline_user = User::where('my_ref_id',$user->have_ref_id)->first();
+            if ($upline_user) {
+                $am = ($user_ac->amount * 50) / 100;
+                $upline_user->balance = $upline_user->balance + $am;
+                $upline_user->save();
+            }
 
             return back()->with('success','Account Successfully Updated');
         }elseif ($status == 3){

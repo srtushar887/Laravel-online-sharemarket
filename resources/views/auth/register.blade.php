@@ -40,7 +40,7 @@
                                             <input type="email" id="name" class="form-control" name="email" placeholder="Email" required="" data-error="Please enter your name">
                                         </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="text" id="name" class="form-control" name="phone" placeholder="Phone Number" required="" data-error="Please enter your name">
+                                            <input type="number"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"  class="form-control" name="phone" placeholder="Phone Number" required="" maxlength="10">
                                         </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <input type="password" id="msg_subject" class="form-control" name="password" placeholder="Password" required="" data-error="Please enter your message subject">

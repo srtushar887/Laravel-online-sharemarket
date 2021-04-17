@@ -28,7 +28,6 @@
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Status</th>
-                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -37,7 +36,18 @@
                                     <th>{{$user->name}}</th>
                                     <th>{{$user->email}}</th>
                                     <th>{{$user->phone}}</th>
-                                    <th>{{$user->status}}</th>
+                                    <th>
+                                        @if ($user->is_account_veirified == 0)
+                                            Not Activated
+                                        @elseif($user->is_account_veirified == 1)
+                                            Activated
+                                        @elseif($user->is_account_veirified == 2)
+                                            Blocked
+                                        @else
+                                            Not Set
+
+                                        @endif
+                                    </th>
                                 </tr>
                             @endforeach
                             </tbody>

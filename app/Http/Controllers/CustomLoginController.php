@@ -129,6 +129,7 @@ class CustomLoginController extends Controller
                     $user->password = Hash::make($request->password);
                     $user->have_ref_id = $request->have_ref_id;
                     $user->is_account_veirified = 0;
+                    $user->is_acc_activate = 0;
                     $user->save();
 
                     $code= Str::random(10).rand(000,999).$user->id.rand(00000,99999).Str::random(7).rand(000,999);
@@ -164,9 +165,9 @@ class CustomLoginController extends Controller
             $user->is_account_veirified = 1;
             $user->ver_code = null;
             $user->save();
-            return redirect(route('login'))->with('acoount_active','Your account successfully activated. Please login');
+            return redirect(route('login'))->with('acoount_active','Your email is successfully verified. Please login.');
         }else{
-            return redirect(route('login'))->with('login_error','Sorry! Your account is not activated, kindly verify your account to continue');
+            return redirect(route('login'))->with('login_error','Sorry! Your account is not activated, kindly verify your email to continue');
         }
 
     }
