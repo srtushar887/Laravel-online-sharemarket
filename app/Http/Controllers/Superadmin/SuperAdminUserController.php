@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\User;
 use App\Models\user_account_active;
+use App\Models\user_buy_share;
+use App\Models\user_plan;
+use App\Models\user_withdraw;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -40,6 +43,12 @@ class SuperAdminUserController extends Controller
 
     public function user_delete(Request $request){
         $user_del = User::where('id',$request->user_delete)->first();
+
+        user_plan::where('user_id',$user_del->id)->delete();
+        user_buy_share::where('user_id',$user_del->id)->delete();
+        user_withdraw::where('user_id',$user_del->id)->delete();
+        user_account_active::where('user_id',$user_del->id)->delete();
+
         $user_del->delete();
         return back()->with('success','User Account Successfully Deleted');
 

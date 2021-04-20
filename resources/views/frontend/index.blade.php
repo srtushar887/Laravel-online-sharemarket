@@ -232,7 +232,10 @@
                                             @else
                                                 <img src="{{asset('assets/frontend/')}}/img/icon/m.png" alt="">
                                             @endif
-                                            {{$user_cdata->name}}
+                                            @if ($user_cdata)
+                                                    {{$user_cdata->name}}
+                                            @endif
+
                                         </td>
                                         <td>{{\Carbon\Carbon::parse($chplan->created_at)->format('Y-m-d')}}</td>
                                         <td>{{$gn->site_currency}}.{{$chplan->amount}}</td>
@@ -264,7 +267,10 @@
                                             @else
                                                 <img src="{{asset('assets/frontend/')}}/img/icon/m.png" alt="">
                                             @endif
-                                            {{$user_wdata->name}}
+                                            @if ($user_wdata)
+                                                    {{$user_wdata->name}}
+                                            @endif
+
                                         </td>
                                         <td>{{\Carbon\Carbon::parse($userwit->created_at)->format('Y-m-d')}}</td>
                                         <td>{{$gn->site_currency}}.{{$userwit->amount}}</td>

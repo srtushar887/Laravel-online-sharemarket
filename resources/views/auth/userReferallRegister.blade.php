@@ -34,7 +34,7 @@
                                         </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <label>Name</label>
-                                            <input type="text" id="name" class="form-control" name="name" placeholder="Name" required="" data-error="Please enter your name">
+                                            <input type="text" id="name" class="form-control" name="name" placeholder="Full Name" required="" data-error="Please enter your name">
                                         </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <label>Email</label>

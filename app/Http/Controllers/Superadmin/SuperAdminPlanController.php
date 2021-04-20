@@ -71,16 +71,16 @@ class SuperAdminPlanController extends Controller
         $plan_type_update = user_plan::where('id',$user_plan->id)->first();
         if ($request->status == 1) {
             if ($plan_type_update->plan_type == 3) {
-                $plan_type_update->first_date = Carbon::now()->addDays(3);
-                $plan_type_update->second_date = Carbon::now()->addDays(6);
-                $plan_type_update->third_date = Carbon::now()->addDays(9);
-                $plan_type_update->return_date = Carbon::now()->addDays(12);
+                $plan_type_update->first_date = Carbon::now('Africa/Nairobi')->addDays(3);
+                $plan_type_update->second_date = Carbon::now('Africa/Nairobi')->addDays(6);
+                $plan_type_update->third_date = Carbon::now('Africa/Nairobi')->addDays(9);
+                $plan_type_update->return_date = Carbon::now('Africa/Nairobi')->addDays(12);
                 $plan_type_update->claim_status_one = 1;
                 $plan_type_update->claim_status_two = 1;
                 $plan_type_update->claim_status_three = 1;
                 $plan_type_update->claim_status_four = 1;
             }else{
-                $plan_type_update->return_date = Carbon::now()->addDays($plan->return_date);
+                $plan_type_update->return_date = Carbon::now('Africa/Nairobi')->addDays($plan->return_date);
             }
         }
         $plan_type_update->save();

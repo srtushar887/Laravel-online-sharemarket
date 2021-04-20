@@ -43,7 +43,11 @@
                                 $plan_name = \App\Models\plan::where('id',$plan->plan_id)->first();
                                 ?>
                                 <tr>
-                                    <th>{{$user->name}}</th>
+                                    <th>
+                                        @if ($user)
+                                            {{$user->name}}
+                                        @endif
+                                    </th>
                                     <th>
                                         @if($plan->plan_type == 1)
                                             <span class="badge badge-primary text-white">Share Plan</span>

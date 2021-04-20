@@ -34,7 +34,7 @@
                                     <form id="" method="post" action="{{route('user.register.submit')}}" class="log-form">
                                         @csrf
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="text" id="name" class="form-control" name="name" placeholder="Name" required="" data-error="Please enter your name">
+                                            <input type="text" id="name" class="form-control" name="name" placeholder="Full Name" required="" data-error="Please enter your name">
                                         </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <input type="email" id="name" class="form-control" name="email" placeholder="Email" required="" data-error="Please enter your name">

@@ -65,7 +65,7 @@ class UserPlanController extends Controller
         $my_plans = user_plan::where('user_id',Auth::user()->id)
             ->Where('status',1)
             ->get();
-        $date = Carbon::now();
+        $date = Carbon::now('Africa/Nairobi');
         foreach ($my_plans as $mplan){
 
             if ($mplan->plan_type == 3) {

@@ -69,12 +69,16 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Amount</label>
-                            <input type="text" class="form-control" placeholder="Enter Amount" name="amount" value="200" readonly>
+                            <label>Paybill Number</label>
+                            <input type="text" class="form-control" placeholder="Enter Amount" name="paybill" value="4047793" readonly>
                         </div>
                         <div class="form-group">
                             <label>Address</label>
                             <textarea type="text" class="form-control" required placeholder="Enter Address" name="address" readonly>{{Auth::user()->phone}}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input type="text" class="form-control" placeholder="Enter Amount" name="amount" value="200" readonly>
                         </div>
                     </div>
                     <div class="modal-footer">

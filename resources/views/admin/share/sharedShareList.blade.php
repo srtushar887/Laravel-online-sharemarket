@@ -46,7 +46,11 @@
                                 $user_name =  \App\Models\User::where('id',$plan->user_id)->first();
                                 ?>
                                 <tr>
-                                    <th>{{$user_name->name}}</th>
+                                    <th>
+                                        @if ($user_name)
+                                            {{$user_name->name}}
+                                        @endif
+                                    </th>
                                     <th>{{$p_name->plan_name}}</th>
                                     <th>
                                         {{$gn->site_currency}}.{{$plan->amount}}
