@@ -102,6 +102,7 @@ Route::group(['middleware' => ['auth:sanctum','uverify']], function() {
         //my plan
         Route::get('/my-plan', [\App\Http\Controllers\User\UserPlanController::class,'my_plan'])->name('user.my.plan');
         Route::get('/claim-amount/{plan_id}/{amount}/{type}/{userplan_id}', [\App\Http\Controllers\User\UserPlanController::class,'claim_first'])->name('cliam.amount');
+        Route::get('/re-invest/{id}', [\App\Http\Controllers\User\UserPlanController::class,'re_invest'])->name('user.reinvest');
 
         //buy share
         Route::get('/buy', [\App\Http\Controllers\User\UserShareController::class,'buy'])->name('user.buy');

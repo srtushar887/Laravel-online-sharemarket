@@ -7,6 +7,7 @@ use App\Models\plan;
 use App\Models\User;
 use App\Models\user_plan;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,6 +22,9 @@ class UserPlanController extends Controller
 
     public function choose_plan_save(Request $request)
     {
+
+        $Amount = $request->plan_amount;
+        $phoneNumber = Auth::user()->phone;
 
 
         $plan = plan::where('id',$request->choose_plan)->first();
@@ -37,26 +41,73 @@ class UserPlanController extends Controller
             $am = $request->plan_amount - $profile_am;
             $reuturn_am = $request->plan_amount + $profile_am;
 
-            $new_plan = new user_plan();
-            $new_plan->user_id = Auth::user()->id;
-            $new_plan->plan_id = $plan->id;
-            $new_plan->amount = $request->plan_amount;
-            $new_plan->profit = $plan->profit;
-            $new_plan->profit_amount = $profile_am;
-            $new_plan->return_amount = $reuturn_am;
-            $new_plan->address = $request->address;
-            $new_plan->status = 0;
-            $new_plan->claim_status_one = 0;
-            $new_plan->plan_type = $plan->plan_type;
-            $new_plan->save();
+            if ($request->address == null) {
+                return back()->with('alert','Please add phone Number');
+            }else{
+                $new_plan = new user_plan();
+                $new_plan->user_id = Auth::user()->id;
+                $new_plan->plan_id = $plan->id;
+                $new_plan->amount = $request->plan_amount;
+                $new_plan->profit = $plan->profit;
+                $new_plan->profit_amount = $profile_am;
+                $new_plan->return_amount = $reuturn_am;
+                $new_plan->address = $request->address;
+                $new_plan->status = 0;
+                $new_plan->claim_status_one = 0;
+                $new_plan->plan_type = $plan->plan_type;
+                $new_plan->save();
 
-            return back()->with('success','Plan Successfully Added');
+                return back()->with('success','Plan Successfully Added');
+            }
+
+
         }
 
 
 
 
     }
+
+
+
+    public function re_invest($id)
+    {
+
+        $plan_am = user_plan::where('id',$id)->first();
+
+        if (Auth::user()->is_acc_activate == 0 || Auth::user()->is_acc_activate == 1 || Auth::user()->is_acc_activate == 3){
+                return back()->with('alert','Your account is not activated');
+        }elseif (Auth::user()->balance <= 0){
+            return back()->with('alert','Insufficient Balance');
+        }elseif (Auth::user()->balance < $plan_am->amount){
+            return back()->with('alert','Insufficient Balance');
+        }
+        else{
+
+
+
+            $user = User::where('id',Auth::user()->id)->first();
+            $user->balance = $user->balance - $plan_am->amount;
+            $user->save();
+
+
+            $new_plan = new user_plan();
+            $new_plan->user_id = Auth::user()->id;
+            $new_plan->plan_id = $plan_am->plan_id;
+            $new_plan->amount = $plan_am->amount;
+            $new_plan->profit = $plan_am->profit;
+            $new_plan->profit_amount = $plan_am->profit_amount;
+            $new_plan->return_amount = $plan_am->return_amount;
+            $new_plan->address = $plan_am->address;
+            $new_plan->status = 0;
+            $new_plan->claim_status_one = 0;
+            $new_plan->plan_type = $plan_am->plan_type;
+            $new_plan->save();
+
+            return back()->with('success','Plan Successfully Added');
+        }
+    }
+
 
 
     public function my_plan()

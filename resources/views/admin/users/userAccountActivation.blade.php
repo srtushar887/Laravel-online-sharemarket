@@ -38,11 +38,29 @@
                                 $user_details= \App\Models\User::where('id',$user_ac->user_id)->first();
                                 ?>
                                 <tr>
-                                    <th>{{$user_details->name}}</th>
-                                    <th>{{$user_details->email}}</th>
-                                    <th>{{$user_details->phone}}</th>
-                                    <th>{{$user_ac->address}}</th>
                                     <th>
+                                        @if ($user_details)
+                                            {{$user_details->name}}
+                                        @endif
+                                        </th>
+                                    <th>
+                                        @if ($user_details)
+                                            {{$user_details->email}}
+                                        @endif
+
+                                    </th>
+                                    <th>
+                                        @if ($user_details)
+                                        {{$user_details->phone}}
+                                            @endif
+                                    </th>
+                                    <th>
+                                        @if ($user_details)
+                                        {{$user_ac->address}}
+                                            @endif
+                                    </th>
+                                    <th>
+
                                         @if ($user_ac->status == 1)
                                             Submited
                                         @elseif($user_ac->status == 2)

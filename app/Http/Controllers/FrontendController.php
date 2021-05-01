@@ -25,7 +25,7 @@ class FrontendController extends Controller
         $user_with = user_withdraw::orderBy('id','desc')->take(5)->get();
         $choose_plan = user_plan::orderBy('id','desc')->take(5)->get();
         $dep_count_am = user_plan::sum('amount');
-        $wit_count_am = user_withdraw::sum('amount');
+        $wit_count_am = user_withdraw::where('status',2)->sum('amount');
         $blogs = blog::orderBy('id','desc')->take(3)->get();
         return view('frontend.index',compact('total_users','plans','user_with','choose_plan','dep_count_am','wit_count_am','blogs'));
     }

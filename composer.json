@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.0",
         "pusher/pusher-php-server": "^6.1",
+        "safaricom/mpesa": "^1.0",
         "tightenco/ziggy": "^1.0",
         "yajra/laravel-datatables-oracle": "^9.17"
     },

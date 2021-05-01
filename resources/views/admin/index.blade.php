@@ -94,14 +94,15 @@
                                     <td>{{$luser->email}}</td>
                                     <td>{{$luser->phone}}</td>
                                     <td>
-                                        @if ($luser->account_status == 1)
-                                            Active
-                                        @elseif ($luser->account_status == 0)
-                                            Not Verified
-                                        @elseif ($luser->account_status == 3)
+                                        @if ($luser->is_account_veirified == 0)
+                                            Not Activated
+                                        @elseif($luser->is_account_veirified == 1)
+                                            Activated
+                                        @elseif($luser->is_account_veirified == 2)
                                             Blocked
                                         @else
-                                            Blocked
+                                            Not Set
+
                                         @endif
                                     </td>
                                 </tr>

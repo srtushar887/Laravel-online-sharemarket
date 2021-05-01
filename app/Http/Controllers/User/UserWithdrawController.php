@@ -27,7 +27,7 @@ class UserWithdrawController extends Controller
             return back()->with('alert','Sorry! Insufficient Balance');
         }else{
 
-            $amount = ($request->amount * 5) / 100;
+            $amount = ($request->amount * 2) / 100;
             $total_am = $request->amount - $amount;
 
             $new_with = new user_withdraw();

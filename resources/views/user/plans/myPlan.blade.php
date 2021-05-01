@@ -32,6 +32,7 @@
                                 <th>Due Date</th>
                                 <th>Plan Type</th>
                                 <th>Action</th>
+                                <th>Re-Invest</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -204,6 +205,22 @@
                                                 @else
                                                     Not Set
                                                 @endif
+                                        @endif
+
+                                    </td>
+                                    <td>
+                                        @if ($plan->plan_type == 3)
+                                            @if ($plan->claim_status_one == 3 && $plan->claim_status_two ==3  && $plan->claim_status_three == 3 && $plan->claim_status_four == 3)
+                                                <a href="{{route('user.reinvest',$plan->id)}}">Re-Invest</a>
+                                            @else
+                                                Re-Invest
+                                                @endif
+                                        @else
+                                            @if($plan->status == 2)
+                                                <a href="{{route('user.reinvest',$plan->id)}}">Re-Invest</a>
+                                            @else
+                                                  Re-Invest
+                                            @endif
                                         @endif
 
                                     </td>
